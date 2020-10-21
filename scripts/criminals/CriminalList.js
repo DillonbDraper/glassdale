@@ -1,4 +1,5 @@
 import { useConvictions } from '../convictions/ConvictionProvider.js'
+import { useOfficers } from '../officers/OfficerProvider.js'
 import { getCriminals, useCriminals } from './CriminalProvider.js'
 
 const eventHub = document.querySelector(".container")
@@ -16,6 +17,27 @@ eventHub.addEventListener('crimeChosen', event => {
         const appStateCriminals = useCriminals()
         
         const matchingCriminals = appStateCriminals.filter(matchedCrime => matchedCrime.conviction === theCrime[0].name)
+        
+        /*
+            Then invoke render() and pass the filtered collection as
+            an argument
+        */
+       render(matchingCriminals)
+    }
+})
+
+eventHub.addEventListener('officerSelected', event => {
+    // Use the property you added to the event detail.
+    if (event.detail.officer !== 0){
+        /*
+            Filter the criminals application state down to the people that committed the crime
+        */
+        const officerArray = useOfficers()
+        const theOfficer = officerArray.filter(officerObj => officerObj.id === event.detail.officer)
+        
+        const appStateCriminals = useCriminals()
+        
+        const matchingCriminals = appStateCriminals.filter(matchedCrime => matchedCrime.arrestingOfficer === theOfficer[0].name)
         
         /*
             Then invoke render() and pass the filtered collection as
