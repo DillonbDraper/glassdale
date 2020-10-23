@@ -12,11 +12,11 @@ eventHub.addEventListener('crimeChosen', event => {
             Filter the criminals application state down to the people that committed the crime
         */
         const convictionsArray = useConvictions()
-        const theCrime = convictionsArray.filter(convictionObj => convictionObj.id === parseInt(event.detail.crimeThatWasChosen))
+        const theCrime = convictionsArray.find(convictionObj => convictionObj.id === parseInt(event.detail.crimeThatWasChosen))
         
         const appStateCriminals = useCriminals()
         
-        const matchingCriminals = appStateCriminals.filter(matchedCrime => matchedCrime.conviction === theCrime[0].name)
+        const matchingCriminals = appStateCriminals.filter(matchedCrime => matchedCrime.conviction === theCrime.name)
         
         /*
             Then invoke render() and pass the filtered collection as
@@ -33,11 +33,11 @@ eventHub.addEventListener('officerSelected', event => {
             Filter the criminals application state down to the people that committed the crime
         */
         const officerArray = useOfficers()
-        const theOfficer = officerArray.filter(officerObj => officerObj.id === event.detail.officer)
+        const theOfficer = officerArray.find(officerObj => officerObj.id === event.detail.officer)
         
         const appStateCriminals = useCriminals()
         
-        const matchingCriminals = appStateCriminals.filter(matchedCrime => matchedCrime.arrestingOfficer === theOfficer[0].name)
+        const matchingCriminals = appStateCriminals.filter(matchedCrime => matchedCrime.arrestingOfficer === theOfficer.name)
         
         /*
             Then invoke render() and pass the filtered collection as
