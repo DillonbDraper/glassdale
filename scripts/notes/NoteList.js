@@ -1,8 +1,9 @@
+import { getCriminals, useCriminals } from "../criminals/CriminalProvider.js"
 import { getNotes, useNotes } from "./NoteDataProvider.js"
 import { NoteHTML } from "./NoteHTML.js"
 
 const eventHub = document.querySelector(".container")
-const noteTarget = document.querySelector(".rendered__notes")
+const contentTarget = document.querySelector(".rendered__notes")
 
 eventHub.addEventListener("noteStateChanged", () => {
         NoteList()
@@ -10,19 +11,26 @@ eventHub.addEventListener("noteStateChanged", () => {
 )
 
 export const NoteList = () => {
-    getNotes().then(
+    getNotes()
+    .then(getCriminals).then(
         () => {
              const noteArray = useNotes()
-             render(noteArray)
+             const criminalArray = useCriminals()
+             render(noteArray, criminalArray)
          }
     )
 }
 
-const render = (noteArr) => {
-    let noteString = ""
-    for (const note of noteArr) {
-        noteString += NoteHTML(note)
-    }
+const render = (noteCollection, criminalCollection) => {
+    contentTarget.innerHTML = noteCollection.map(note => {
+        // Find the related criminal
+        const relatedCriminal = criminalCollection.find(criminal => criminal.id === parseInt(note.criminalId))
 
-    noteTarget.innerHTML = `<h3> Officer Notes</h3>` + noteString
+        return `
+            <section class="note">
+                <h2>Note about ${relatedCriminal.name}</h2>
+                ${note.noteText}
+            </section>
+        `
+    })
 }

@@ -1,11 +1,19 @@
 {
   "notes": [
     {
-      "date": "2020-10-15",
-      "suspect": "Cadbury",
-      "officer": "Trix",
-      "noteText": "I saw him on the countertop.",
+      "criminalId": "2",
+      "noteText": "He's shady",
       "id": 1
+    },
+    {
+      "criminalId": "8",
+      "noteText": "This is sample note text",
+      "id": 2
+    },
+    {
+      "criminalId": "9",
+      "noteText": "Test 3",
+      "id": 3
     }
   ]
 }

@@ -5,6 +5,7 @@ export const NoteHTML = (noteObj) => {
         <p class="note__suspect"> Concerning suspect: ${noteObj.suspect}</p>
         <p class="note__officer"> Inputting officer: ${noteObj.officer}</p>
         <p class="note__text"> Note body: ${noteObj.noteText}</p>
+        <button id="deleteNote--${noteObj.id}">Delete</button>
         </section>
     `
 }
