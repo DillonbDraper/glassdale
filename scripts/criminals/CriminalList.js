@@ -4,6 +4,7 @@ import { getCriminals, useCriminals } from './CriminalProvider.js'
 import { Criminal } from "./Criminal.js"
 import { getFacilities, useFacilities } from "../facility/FacilityProvider.js"
 import { getCriminalFacilities, useCriminalFacilities } from "../facility/CriminalFacilityProvider.js"
+import { FacilityList } from '../facility/FacilityList.js'
 
 const eventHub = document.querySelector(".container")
 
@@ -106,3 +107,4 @@ const render = (criminalsToRender, allFacilities, allRelationships) => {
         }
     ).join("")
 }
+

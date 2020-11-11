@@ -43,10 +43,20 @@ h1,h2,h3,h4,h5,h6 {
 	justify-content: space-evenly;
 }
 
-.criminal, .witness {
+.criminal, .witness, .facility {
 	flex-basis: 20%;
 	border: 1px dotted black;
 	margin-right: 50px;
 	margin-bottom: 50px;
 	padding-left: 1%;
+}
+
+.facilityContainer {
+	display: none;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.facility {
+	background-color: peachpuff;
 }
