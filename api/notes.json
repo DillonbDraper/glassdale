@@ -1,3 +1,12 @@
 {
-  "notes": []
+  "notes": [
+    {
+      "criminalId": "76",
+      "noteText": "This person is awful.  They drive the UPS truck",
+      "noteDate": "2020-11-17",
+      "inputtingOfficer": "Trix",
+      "timeStamp": 1605464910007,
+      "id": 1
+    }
+  ]
 }

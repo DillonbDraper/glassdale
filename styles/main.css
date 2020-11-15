@@ -60,3 +60,17 @@ h1,h2,h3,h4,h5,h6 {
 .facility {
 	background-color: peachpuff;
 }
+
+.criminal {
+	background-color: palegreen
+}
+
+.witnessContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.witness {
+	background-color: paleturquoise;
+}

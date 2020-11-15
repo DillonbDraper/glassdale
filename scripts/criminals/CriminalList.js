@@ -12,6 +12,9 @@ const eventHub = document.querySelector(".container")
 eventHub.addEventListener('crimeChosen', event => {
     // Use the property you added to the event detail.
     if (event.detail.crimeThatWasChosen !== "0") {
+
+        const allFacilities = useFacilities()
+        const allRelationships = useCriminalFacilities()
         /*
             Filter the criminals application state down to the people that committed the crime
         */
@@ -26,7 +29,7 @@ eventHub.addEventListener('crimeChosen', event => {
             Then invoke render() and pass the filtered collection as
             an argument
         */
-        render(matchingCriminals)
+        render(matchingCriminals, allFacilities, allRelationships)
     }
 })
 
@@ -53,6 +56,9 @@ eventHub.addEventListener('officerSelected', event => {
         /*
             Filter the criminals application state down to the people that committed the crime
         */
+       const allFacilities = useFacilities()
+       const allRelationships = useCriminalFacilities()
+
         const officerArray = useOfficers()
         const theOfficer = officerArray.find(officerObj => officerObj.id === event.detail.officer)
 
@@ -64,7 +70,8 @@ eventHub.addEventListener('officerSelected', event => {
             Then invoke render() and pass the filtered collection as
             an argument
         */
-        render(matchingCriminals)
+       render(matchingCriminals, allFacilities, allRelationships)
+
     }
 })
 

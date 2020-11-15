@@ -47,7 +47,7 @@ const render = (facilitiesToRender, allCriminals, allRelationships) => {
 }
 
 eventHub.addEventListener("facilitiesButtonClicked", e => {
-    let facilityDisplay = document.querySelector(".facilityContainer")
+    const facilityDisplay = document.querySelector(".facilityContainer")
   
     if (!(facilityDisplay.style.display)) {
         facilityDisplay.style.display = "flex"

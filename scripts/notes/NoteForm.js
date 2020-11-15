@@ -12,7 +12,10 @@ eventHub.addEventListener("click", clickEvent => {
         // Make a new object representation of a note
         const newNote = {
             criminalId: document.querySelector("#noteForm--criminal").value,
-            noteText: document.querySelector("#note-text").value
+            noteText: document.querySelector("#note-text").value,
+            noteDate: document.querySelector("#date").value,
+            inputtingOfficer: document.querySelector("#officerName").value,
+            timeStamp: Date.now()
         }
 
         // Change API state and application state

@@ -1,25 +1,24 @@
 import { getCriminals, useCriminals } from "../criminals/CriminalProvider.js"
 import { getNotes, useNotes } from "./NoteDataProvider.js"
-import { NoteHTML } from "./NoteHTML.js"
 import { deleteNote } from "./NoteDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".rendered__notes")
 
 eventHub.addEventListener("noteStateChanged", () => {
-        NoteList()
-    }
+    NoteList()
+}
 )
 
 export const NoteList = () => {
     getNotes()
-    .then(getCriminals).then(
-        () => {
-             const noteArray = useNotes()
-             const criminalArray = useCriminals()
-             render(noteArray, criminalArray)
-         }
-    )
+        .then(getCriminals).then(
+            () => {
+                const noteArray = useNotes()
+                const criminalArray = useCriminals()
+                render(noteArray, criminalArray)
+            }
+        )
 }
 
 const render = (noteCollection, criminalCollection) => {
@@ -30,11 +29,13 @@ const render = (noteCollection, criminalCollection) => {
         return `
             <section class="note">
                 <h2>Note about ${relatedCriminal.name}</h2>
-                ${note.noteText}
+                <h5>On ${note.noteDate}
+                <h5>From Officer ${note.inputtingOfficer}</h5>
+                <p>${note.noteText}<p>
                 <button id="deleteNote--${note.id}">Delete</button>
             </section>
         `
-    })
+    }).join("")
 }
 
 eventHub.addEventListener("click", clickEvent => {
@@ -47,12 +48,12 @@ eventHub.addEventListener("click", clickEvent => {
             Once the operation is complete you should THEN invoke
             useNotes() and render the note list again.
         */
-       deleteNote(id).then(
-           () => {
-               const updatedNotes = useNotes()
-               const criminals = useCriminals()
-               render(updatedNotes, criminals)
-           }
-       )
+        deleteNote(id).then(
+            () => {
+                const updatedNotes = useNotes()
+                const criminals = useCriminals()
+                render(updatedNotes, criminals)
+            }
+        )
     }
 })
